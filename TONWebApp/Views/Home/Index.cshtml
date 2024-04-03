@@ -1,0 +1,22 @@
+﻿@using TONWebApp.Models;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="main-container">
+    <div class="main-container__bg-blur"></div>
+    <div class="main-container__title">
+        РЕМОНТ ТОПЛИВНОЙ ДИЗЕЛЬНОЙ АППАРАТУРЫ В ВЕРХНЕДВИНСКЕ
+    </div>
+    
+    <div class="main-container__number">
+        @await Html.PartialAsync(
+            "_CardPartial",
+            new Card() {
+                Title = "+375333586375",
+                ColorClass="bg-blue-box"
+            }
+        )
+    </div>
+</div>
+    

@@ -1,0 +1,15 @@
+﻿@using TONWebApp.Models;
+
+@model IEnumerable<Card>
+
+
+<div class="service-cards-container">
+@*     <div class="search-box-container">
+        @await Html.PartialAsync("_SearchPartial")
+    </div> *@
+    <div class="service-cards-container__grid">
+        @foreach (var card in Model) {
+            @await Html.PartialAsync("_CardPartial", card)
+        }
+    </div>
+</div>

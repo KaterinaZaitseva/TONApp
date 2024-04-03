@@ -1,0 +1,14 @@
+﻿@using TONWebApp.Models;
+
+@model Card
+
+<div class="card">
+    <div class="container-card @Model.ColorClass">
+        @if (Model.Title != string.Empty) {
+            <p class="card__title">@Model.Title</p>
+        }
+        @if (Model.Description != string.Empty) {
+            <p class="card__description">@Model.Description</p>
+        }
+    </div>
+</div>

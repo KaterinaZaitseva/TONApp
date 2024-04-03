@@ -1,0 +1,15 @@
+﻿.service-cards-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.service-cards-container__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 40px;
+    justify-content: center;
+    justify-items: center;
+    padding: 40px 50px;
+}

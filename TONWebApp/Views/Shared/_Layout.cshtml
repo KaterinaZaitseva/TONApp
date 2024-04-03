@@ -1,0 +1,90 @@
+﻿@using TONWebApp.Controllers;
+@using TONWebApp.Infrastructure.Extensions;
+
+@{
+    string? currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/layout-style.css"/>
+    <link rel="stylesheet" href="~/css/card-style.css"/>
+    <link rel="stylesheet" href="~/css/cards-page-style.css"/>
+    <link rel="stylesheet" href="~/css/contact-page-style.css"/>
+    <link rel="stylesheet" href="~/css/index-page-style.css"/>
+    <link rel="stylesheet" href="~/css/search-input-style.css"/>
+    <link rel="stylesheet" href="~/css/services-page-style.css"/>
+    <script defer src="~/js/search.js"></script>
+  
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header class="header">
+        <a class="logo" asp-action="@nameof(HomeController.Index)">
+            <div class="logo__container">
+                <img class="logo__image" src="/logo-ton.svg" alt="logo">
+                <span class="logo__text gradient-text">АП ТОН</span>
+            </div>
+         </a>
+        <input type="checkbox" id="nav-check">
+        <div class="nav-btn">
+            <label class="nav-btn__label" for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <ul class="nav-bar">
+            <li>
+                <a class="nav-bar__link @(currentAction == nameof(HomeController.Products) ? "nav-bar__link_active" : "")"
+                    asp-action="@nameof(HomeController.Products)">
+                    <div class="nav-bar__link-content">
+                        <span class="nav-bar__link-text">Продажа</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="nav-bar__link @(currentAction == nameof(HomeController.Services) ? "nav-bar__link_active" : "")"
+                    asp-action="@nameof(HomeController.Services)">
+                    <div class="nav-bar__link-content">
+                        <span class="nav-bar__link-text">Услуги</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="nav-bar__link @(currentAction == nameof(HomeController.Contact) ? "nav-bar__link_active" : "")"
+                    asp-action="@nameof(HomeController.Contact)">
+                    <div class="nav-bar__link-content">
+                        <span class="nav-bar__link-text">Контакты</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="@(currentAction == nameof(HomeController.Index) ? "" : "content" )">
+        @RenderBody()
+    </div>
+
+    @if (currentAction != nameof(HomeController.Index)) {
+        <footer class="footer">
+                <div class="footer__container">
+                <div class="footer__container__text">ООО "Агропромышленное предприятие ТОН"</div>
+                <div class="footer__container__text">УНП: 300062376</div>
+                <div class="footer__container__text">Юридический адрес: Витебская обл., г. Верхнедвинск,</div>
+                <div class="footer__container__text">ул. Советская, д. 193/1</div>
+                <div class="footer__container__text">Почтовый индекс: 211631</div>
+                <div class="footer__container__text">p75@mail.ru</div>
+            </div>
+            <div class="footer__container">
+               ---Zaitseva Ekaterina
+            </div>
+        </footer>
+    }
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
